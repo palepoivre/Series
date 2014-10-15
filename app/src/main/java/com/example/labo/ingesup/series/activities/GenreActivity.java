@@ -13,7 +13,9 @@ import com.example.labo.ingesup.series.list.GenreAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Ecran d'acceuil.
+ */
 public class GenreActivity extends Activity {
 
     @Override
