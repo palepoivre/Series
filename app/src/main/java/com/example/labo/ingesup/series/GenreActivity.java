@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+/**
+ * Ecran d'acceuil.
+ */
 public class GenreActivity extends Activity {
 
     @Override
