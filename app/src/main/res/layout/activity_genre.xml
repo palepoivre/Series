@@ -20,7 +20,11 @@
         android:id="@+id/lv_genres"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/tv_titre">
+        android:layout_below="@+id/tv_titre"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:layout_marginTop="20dp"
+        >
 
 
     </ListView>
