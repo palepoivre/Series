@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.activities.SerieActivity;
 import com.example.labo.ingesup.series.bean.Genre;
-import com.example.labo.ingesup.series.bean.Serie;
 
 import java.util.List;
 

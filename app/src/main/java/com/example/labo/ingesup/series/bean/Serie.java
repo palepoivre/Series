@@ -14,8 +14,9 @@ public class Serie {
 
     /**
      * Constructeur
+     * @param s
      */
-    public Serie() {
+    public Serie(String s) {
     }
 
     /** GETTERS & SETTERS **/
