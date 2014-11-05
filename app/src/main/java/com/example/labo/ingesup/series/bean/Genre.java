@@ -5,13 +5,26 @@ package com.example.labo.ingesup.series.bean;
  */
 public class Genre {
 
+    private int mId;
     private String mNom;
 
     public Genre(String nom){
       mNom = nom;
      }
 
-    public String getmNom() {
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int mId) {
+        this.mId = mId;
+    }
+
+    public String getNom() {
         return mNom;
+    }
+
+    public void setNom(String mNom) {
+        this.mNom = mNom;
     }
 }

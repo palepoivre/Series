@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.labo.ingesup.series.R;
+import com.example.labo.ingesup.series.activities.DetailActivity;
 import com.example.labo.ingesup.series.activities.SerieActivity;
 import com.example.labo.ingesup.series.bean.Genre;
 
@@ -45,12 +46,12 @@ public class GenreAdapter extends ArrayAdapter {
         convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
 
         TextView textViewTitre = (TextView) convertView.findViewById(R.id.tv_item_titre);
-        textViewTitre.setText(genreEnCours.getmNom());
+        textViewTitre.setText(genreEnCours.getNom());
         ImageView imageViewFleche = (ImageView) convertView.findViewById(R.id.iv_item_fleche);
         imageViewFleche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent serieActivityIntent = new Intent(mContext, SerieActivity.class);
+                Intent serieActivityIntent = new Intent(mContext, DetailActivity.class);
                 mContext.startActivity(serieActivityIntent);
             }
         });

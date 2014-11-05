@@ -5,9 +5,11 @@ package com.example.labo.ingesup.series.bean;
  */
 public class Serie {
 
+    private int mId;
     private String mTitre;
     private String mUrl;
-    private String mGenre;
+    private String mTrailerUrl;
+    private Genre mGenre;
     private String mRealisateur;
     private String mSynopsis;
     private boolean mVue;
@@ -19,7 +21,17 @@ public class Serie {
     public Serie(String s) {
     }
 
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int mId) {
+        this.mId = mId;
+    }
+
     /** GETTERS & SETTERS **/
+
+
 
     public String getTitre() {
         return mTitre;
@@ -37,11 +49,19 @@ public class Serie {
         this.mUrl = mUrl;
     }
 
-    public String getGenre() {
+    public String getTrailerUrl() {
+        return mTrailerUrl;
+    }
+
+    public void setTrailerUrl(String mTrailerUrl) {
+        this.mTrailerUrl = mTrailerUrl;
+    }
+
+    public Genre getGenre() {
         return mGenre;
     }
 
-    public void setGenre(String mGenre) {
+    public void setGenre(Genre mGenre) {
         this.mGenre = mGenre;
     }
 
@@ -65,7 +85,7 @@ public class Serie {
         return mVue;
     }
 
-    public void setmVue(boolean mVue) {
+    public void setVue(boolean mVue) {
         this.mVue = mVue;
     }
 }
