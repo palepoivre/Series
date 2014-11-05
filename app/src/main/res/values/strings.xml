@@ -6,4 +6,18 @@
     <string name="action_settings">Settings</string>
     <string name="genre_titre">Genres</string>
 
+    <!-- Création d'une série -->
+    <string name="creation_titre">Titre</string>
+    <string name="creation_synopsis">Synopsis</string>
+    <string name="creation_genre">Genre</string>
+    <string name="creation_realisateur">Réalisateur</string>
+    <string name="creation_ajouter">AJOUTER</string>
+    <string name="creation_erreur">Une ou plusieurs informations sont manquantes.</string>
+
+    <!-- Detail d'une série -->
+    <string name="detail_realisateur">Réalisateur : &#160;</string>
+    <string name="detail_genre">Genre : &#160;</string>
+    <string name="detail_synopsis">Synopsis :</string>
+    <string name="detail_vue">Vue</string>
+
 </resources>
