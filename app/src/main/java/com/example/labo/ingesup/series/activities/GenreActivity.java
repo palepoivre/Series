@@ -20,6 +20,9 @@ public class GenreActivity extends Activity {
         List<Genre> mesGenres = new ArrayList<Genre>();
         Genre genre1 = new Genre("policier");
         mesGenres.add(genre1);
+        Genre genre2 = new Genre("Humour");
+        mesGenres.add(genre2);
+
         ListView listDesGenres = (ListView) findViewById(R.id.lv_genres);
         GenreAdapter monGenreAdapter = new GenreAdapter(this, R.layout.item_genre, mesGenres);
         listDesGenres.setAdapter(monGenreAdapter);

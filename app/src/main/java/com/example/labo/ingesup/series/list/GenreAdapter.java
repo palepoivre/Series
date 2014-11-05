@@ -13,7 +13,6 @@ import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.activities.DetailActivity;
 import com.example.labo.ingesup.series.activities.SerieActivity;
 import com.example.labo.ingesup.series.bean.Genre;
-import com.example.labo.ingesup.series.bean.Serie;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class GenreAdapter extends ArrayAdapter {
         imageViewFleche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent serieActivityIntent = new Intent(mContext, DetailActivity.class);
+                Intent serieActivityIntent = new Intent(mContext, SerieActivity.class);
                 mContext.startActivity(serieActivityIntent);
             }
         });
