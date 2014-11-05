@@ -10,7 +10,9 @@
 
     <TextView
         android:id="@+id/tv_titre"
-        android:text="@string/hello_world"
+        android:text="@string/genre_titre"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
