@@ -10,9 +10,7 @@
 
     <TextView
         android:id="@+id/tv_titre"
-        android:text="@string/genre_titre"
-        android:layout_centerHorizontal="true"
-        android:textSize="@dimen/titre"
+        android:text="@string/hello_world"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -20,11 +18,7 @@
         android:id="@+id/lv_genres"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/tv_titre"
-        android:dividerHeight="10dp"
-        android:divider="@null"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_below="@+id/tv_titre">
 
 
     </ListView>
