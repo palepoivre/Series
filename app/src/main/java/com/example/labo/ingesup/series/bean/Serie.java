@@ -14,12 +14,6 @@ public class Serie {
     private String mSynopsis;
     private boolean mVue;
 
-    /**
-     * Constructeur
-     * @param s
-     */
-    public Serie(String s) {
-    }
 
     public int getId() {
         return mId;

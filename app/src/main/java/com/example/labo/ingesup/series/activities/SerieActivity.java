@@ -23,7 +23,8 @@ public class SerieActivity extends Activity {
         setContentView(R.layout.activity_serie);
         List<Serie> mesSeries = new ArrayList<Serie>();
 
-        Serie serie1 = new Serie("The walking dead");
+        Serie serie1 = new Serie();
+        serie1.setTitre("The walking dead");
         mesSeries.add(serie1);
 
         ListView listDesSeries = (ListView) findViewById(R.id.lv_series);
