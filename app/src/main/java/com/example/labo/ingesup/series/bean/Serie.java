@@ -18,7 +18,7 @@ public class Serie {
      * Constructeur
      * @param s
      */
-    public Serie(String s) {
+    public Serie() {
     }
 
     public int getId() {
