@@ -37,11 +37,12 @@ public class SerieAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Serie genreEnCours = mSeries.get(position);
+        Serie serieEnCours = mSeries.get(position);
 
         convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
 
         TextView textViewTitre = (TextView) convertView.findViewById(R.id.tv_item_titre);
+        textViewTitre.setText(serieEnCours.getTitre());
 
         return convertView;
     }
