@@ -79,7 +79,6 @@ public class CreateSerieActivity extends Activity {
                 Serie serieACreer = new Serie();
                 serieACreer.setTitre(mEditTextTitre.getText().toString());
                 serieACreer.setSynopsis(mEditTextSynopsis.getText().toString());
-                serieACreer.setRealisateur(mEditTextRealisateur.getText().toString());
                 serieACreer.setVue(false);
                 //TODO Ajouter le reste des informations & ajouter à la BDD
             }

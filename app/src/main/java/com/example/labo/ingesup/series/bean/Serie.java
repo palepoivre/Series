@@ -1,5 +1,7 @@
 package com.example.labo.ingesup.series.bean;
 
+import java.util.List;
+
 /**
  * Created by clément on 15/10/2014.
  */
@@ -10,15 +12,25 @@ public class Serie {
     private String mUrl;
     private String mTrailerUrl;
     private Genre mGenre;
-    private String mRealisateur;
+    private List<Realisateur> mRealisateurs;
     private String mSynopsis;
     private boolean mVue;
 
     /**
      * Constructeur
-     */
+     **/
     public Serie() {
     }
+
+    public Serie(String mTitre, String mUrl, String mTrailerUrl, List<Realisateur> mRealisateurs, String mSynopsis) {
+        this.mTitre = mTitre;
+        this.mUrl = mUrl;
+        this.mTrailerUrl = mTrailerUrl;
+        this.mRealisateurs = mRealisateurs;
+        this.mSynopsis = mSynopsis;
+    }
+
+    /** GETTERS & SETTERS **/
 
     public int getId() {
         return mId;
@@ -64,12 +76,12 @@ public class Serie {
         this.mGenre = mGenre;
     }
 
-    public String getRealisateur() {
-        return mRealisateur;
+    public List<Realisateur> getRealisateurs() {
+        return mRealisateurs;
     }
 
-    public void setRealisateur(String mRealisateur) {
-        this.mRealisateur = mRealisateur;
+    public void setRealisateurs(List<Realisateur> mRealisateurs) {
+        this.mRealisateurs = mRealisateurs;
     }
 
     public String getSynopsis() {

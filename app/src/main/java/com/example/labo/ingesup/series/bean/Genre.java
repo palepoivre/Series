@@ -8,6 +8,9 @@ public class Genre {
     private int mId;
     private String mNom;
 
+    public Genre() {
+    }
+
     public Genre(String nom){
       mNom = nom;
     }
