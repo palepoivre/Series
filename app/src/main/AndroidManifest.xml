@@ -16,14 +16,19 @@
         <activity
             android:name=".activities.DetailActivity">
 
+
+        </activity>
+        <activity
+            android:name=".activities.GenreActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-    <activity
-        android:name=".activities.GenreActivity"/>
 
 
         <activity
@@ -32,9 +37,11 @@
         </activity>
 
         <activity
-            android:name=".activities.SerieActivity"/>
+            android:name=".activities.SerieActivity">
+
+        </activity>
 
     </application>
-  
+
 
 </manifest>

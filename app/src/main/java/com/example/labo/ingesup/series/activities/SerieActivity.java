@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.bean.Serie;
+import com.example.labo.ingesup.series.db.DatabaseManager;
 import com.example.labo.ingesup.series.list.SerieAdapter;
 
 import java.util.ArrayList;
@@ -18,18 +19,17 @@ import java.util.List;
  */
 public class SerieActivity extends Activity {
 
+    public static final String GENRE_ID = "GENRE_ID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serie);
-        List<Serie> mesSeries = new ArrayList<Serie>();
 
-        Serie serie1 = new Serie();
-        serie1.setTitre("The Walking Dead");
-           mesSeries.add(serie1);
-         Serie serie2 = new Serie();
-        serie2.setTitre("Game of throne");
-        mesSeries.add(serie2);
+        int genreId = getIntent().getIntExtra(GENRE_ID, -1);
+        genreId = 5;
+
+        List<Serie> mesSeries = DatabaseManager.getInstance().getSerieByGenre(genreId);
 
         ListView listDesSeries = (ListView) findViewById(R.id.lv_serie);
 
