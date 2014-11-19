@@ -16,7 +16,6 @@ public class Serie {
 
     /**
      * Constructeur
-     * @param s
      */
     public Serie() {
     }
