@@ -27,6 +27,8 @@ public class GenreActivity extends Activity {
 
         Genre genre1 = new Genre("policier");
         mesGenres.add(genre1);
+        Genre genre2 = new Genre("Humour");
+        mesGenres.add(genre2);
 
         ListView listDesGenres = (ListView) findViewById(R.id.lv_genres);
 
