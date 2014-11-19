@@ -75,6 +75,7 @@ public class DetailActivity extends Activity {
         //On récupère l'id de la série depuis l'écran précédent
         int serieId = getIntent().getIntExtra(SERIE_ID, -1);
 
+
         if(serieId != -1){
             //On cherche la série ayant l'id récupérée
             Serie serieDetail = new Serie();
