@@ -13,7 +13,7 @@ public class Genre {
 
     public Genre(String nom){
       mNom = nom;
-     }
+    }
 
     public int getId() {
         return mId;

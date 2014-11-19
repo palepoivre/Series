@@ -40,8 +40,10 @@ public class GenreSpinnerAdapter extends ArrayAdapter {
             convertView = vi.inflate(mResource, parent, false);
         }
 
+        Genre currentGenre = mGenres.get(position);
+
         TextView textViewItem = (TextView) convertView.findViewById(R.id.tv_item_genre_spinner);
-        textViewItem.setText(mGenres.get(position).getNom());
+        textViewItem.setText(currentGenre.getNom());
 
         return convertView;
     }

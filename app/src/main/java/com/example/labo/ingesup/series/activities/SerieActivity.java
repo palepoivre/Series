@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.bean.Serie;
+import com.example.labo.ingesup.series.list.SerieAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +26,12 @@ public class SerieActivity extends Activity {
 
         Serie serie1 = new Serie();
         serie1.setTitre("The Walking Dead");
-        mesSeries.add(serie1);
+           mesSeries.add(serie1);
+         Serie serie2 = new Serie();
+        serie2.setTitre("Game of throne");
+        mesSeries.add(serie2);
 
-        ListView listDesSeries = (ListView) findViewById(R.id.lv_series);
+        ListView listDesSeries = (ListView) findViewById(R.id.lv_serie);
 
         SerieAdapter serieAdapter = new SerieAdapter(this, R.layout.item_serie, mesSeries);
 

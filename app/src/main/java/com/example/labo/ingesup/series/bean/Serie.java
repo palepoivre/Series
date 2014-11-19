@@ -40,6 +40,10 @@ public class Serie {
         this.mId = mId;
     }
 
+    /** GETTERS & SETTERS **/
+
+
+
     public String getTitre() {
         return mTitre;
     }
