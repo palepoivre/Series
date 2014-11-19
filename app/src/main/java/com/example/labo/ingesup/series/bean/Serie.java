@@ -12,7 +12,7 @@ public class Serie {
     private String mUrl;
     private String mTrailerUrl;
     private Genre mGenre;
-    private List<Realisateur> mRealisateurs;
+    private List<String> mRealisateurs;
     private String mSynopsis;
     private boolean mVue;
 
@@ -22,12 +22,13 @@ public class Serie {
     public Serie() {
     }
 
-    public Serie(String mTitre, String mUrl, String mTrailerUrl, List<Realisateur> mRealisateurs, String mSynopsis) {
+    public Serie(String mTitre, String mUrl, String mTrailerUrl, List<String> mRealisateurs, String mSynopsis, Genre genre) {
         this.mTitre = mTitre;
         this.mUrl = mUrl;
         this.mTrailerUrl = mTrailerUrl;
         this.mRealisateurs = mRealisateurs;
         this.mSynopsis = mSynopsis;
+        this.mGenre = genre;
     }
 
     /** GETTERS & SETTERS **/
@@ -76,11 +77,11 @@ public class Serie {
         this.mGenre = mGenre;
     }
 
-    public List<Realisateur> getRealisateurs() {
+    public List<String> getRealisateurs() {
         return mRealisateurs;
     }
 
-    public void setRealisateurs(List<Realisateur> mRealisateurs) {
+    public void setRealisateurs(List<String> mRealisateurs) {
         this.mRealisateurs = mRealisateurs;
     }
 

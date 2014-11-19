@@ -11,6 +11,10 @@ public class Genre {
     public Genre() {
     }
 
+    public Genre(int id){
+        mId = id;
+    }
+
     public Genre(String nom){
       mNom = nom;
     }

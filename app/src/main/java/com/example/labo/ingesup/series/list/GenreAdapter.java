@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.activities.DetailActivity;
+import com.example.labo.ingesup.series.activities.GenreActivity;
 import com.example.labo.ingesup.series.activities.SerieActivity;
 import com.example.labo.ingesup.series.bean.Genre;
 
@@ -41,7 +42,7 @@ public class GenreAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Genre genreEnCours = mGenres.get(position);
+        final Genre genreEnCours = mGenres.get(position);
 
         convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
 
@@ -52,6 +53,7 @@ public class GenreAdapter extends ArrayAdapter {
             @Override
             public void onClick(View view) {
                 Intent serieActivityIntent = new Intent(mContext, SerieActivity.class);
+                serieActivityIntent.putExtra(SerieActivity.GENRE_ID, genreEnCours.getId());
                 mContext.startActivity(serieActivityIntent);
             }
         });

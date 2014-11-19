@@ -76,8 +76,8 @@ public class DetailActivity extends Activity {
 
     private Serie retrieveSerie(){
         //On récupère l'id de la série depuis l'écran précédent
-        //int serieId = getIntent().getIntExtra(SERIE_ID, -1);
-        int serieId =1;
+        int serieId = getIntent().getIntExtra(SERIE_ID, -1);
+
         if(serieId != -1){
            return DatabaseManager.getInstance().getSerie(serieId);
         }
@@ -87,7 +87,7 @@ public class DetailActivity extends Activity {
 
     private void displaySerie(){
         mTextViewTitre.setText(mSerieToDisplay.getTitre());
-        mTextViewGenre.setText(mSerieToDisplay.getGenre().getNom());
+        //mTextViewGenre.setText(mSerieToDisplay.getGenre().getNom());
         mTextViewSynopsis.setText(mSerieToDisplay.getSynopsis());
 
         ImageLoader.getInstance().displayImage(mSerieToDisplay.getUrl(), mImageViewSerie);

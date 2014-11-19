@@ -39,7 +39,7 @@ public class SerieAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Serie serieEnCours = mSeries.get(position);
+        final Serie serieEnCours = mSeries.get(position);
 
         convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
 
@@ -49,8 +49,9 @@ public class SerieAdapter extends ArrayAdapter {
         imageViewFleche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent DetailActivityIntent = new Intent(mContext, DetailActivity.class);
-                mContext.startActivity(DetailActivityIntent);
+                Intent detailActivityIntent = new Intent(mContext, DetailActivity.class);
+                detailActivityIntent.putExtra(DetailActivity.SERIE_ID, serieEnCours.getId());
+                mContext.startActivity(detailActivityIntent);
             }
         });
     return convertView;
