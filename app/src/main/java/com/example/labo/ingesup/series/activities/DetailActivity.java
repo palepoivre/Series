@@ -10,7 +10,10 @@ import android.widget.TextView;
 import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.bean.Genre;
 import com.example.labo.ingesup.series.bean.Serie;
+import com.example.labo.ingesup.series.db.DatabaseManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.sql.DatabaseMetaData;
 
 /**
  * Created by Eliott on 16/10/2014.
@@ -73,15 +76,10 @@ public class DetailActivity extends Activity {
 
     private Serie retrieveSerie(){
         //On récupère l'id de la série depuis l'écran précédent
-        int serieId = getIntent().getIntExtra(SERIE_ID, -1);
-
+        //int serieId = getIntent().getIntExtra(SERIE_ID, -1);
+        int serieId =1;
         if(serieId != -1){
-            //On cherche la série ayant l'id récupérée
-            Serie serieDetail = new Serie();
-            serieDetail.setTitre("Breaking bad");
-            serieDetail.setGenre(new Genre("Drama"));
-            serieDetail.setSynopsis("az eiunaziue nazuien iuaznei aziue naiuznei uanieu naie iuzaen iuazne aziuen aize iuzanei uaz ei");
-            serieDetail.setVue(false);
+           return DatabaseManager.getInstance().getSerie(serieId);
         }
 
         return null;

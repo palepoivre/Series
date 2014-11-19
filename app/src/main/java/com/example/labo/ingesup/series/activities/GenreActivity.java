@@ -22,7 +22,24 @@ public class GenreActivity extends Activity {
         mesGenres.add(genre1);
         Genre genre2 = new Genre("Humour");
         mesGenres.add(genre2);
-
+        Genre genre3 = new Genre("Action");
+        mesGenres.add(genre3);
+        Genre genre4 = new Genre("Aventure");
+        mesGenres.add(genre4);
+        Genre genre5 = new Genre("Dramatique");
+        mesGenres.add(genre5);
+        Genre genre6 = new Genre("Espionnage");
+        mesGenres.add(genre6);
+        Genre genre7 = new Genre("Guerre");
+        mesGenres.add(genre7);
+        Genre genre8 = new Genre("Fantastique");
+        mesGenres.add(genre8);
+        Genre genre9 = new Genre("Horreur");
+        mesGenres.add(genre9);
+        Genre genre10 = new Genre("Medicale");
+        mesGenres.add(genre10);
+        Genre genre11 = new Genre("Science-Fiction");
+        mesGenres.add(genre11);
         ListView listDesGenres = (ListView) findViewById(R.id.lv_genres);
         GenreAdapter monGenreAdapter = new GenreAdapter(this, R.layout.item_genre, mesGenres);
         listDesGenres.setAdapter(monGenreAdapter);

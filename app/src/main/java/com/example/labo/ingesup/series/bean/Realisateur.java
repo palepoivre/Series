@@ -13,6 +13,10 @@ public class Realisateur {
     public Realisateur() {
     }
 
+    public Realisateur(String nom) {
+        Nom = nom;
+    }
+
     public int getId() {
         return id;
     }

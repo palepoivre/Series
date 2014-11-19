@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.labo.ingesup.series.bean.Genre;
 import com.example.labo.ingesup.series.bean.Realisateur;
 import com.example.labo.ingesup.series.bean.Serie;
-import com.example.labo.ingesup.series.database.SeriesOpenHelper;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -54,17 +53,17 @@ public class DatabaseManager {
         SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
         List<Serie> series = new ArrayList<Serie>();
 
-        String whereClause = SeriesOpenHelper.SeriesTable.COLUMN_ID_GENRE + " = " + String.valueOf(genreId);
+        String whereClause = SeriesOpenHelper.SerieTable.COLUMN_ID_GENRE + " = " + String.valueOf(genreId);
 
-        Cursor cursor = db.query(SeriesOpenHelper.SeriesTable.TABLE_NAME, null, whereClause, null, null, null, null);
+        Cursor cursor = db.query(SeriesOpenHelper.SerieTable.TABLE_NAME, null, whereClause, null, null, null, null);
         while(cursor.moveToNext()){
             Serie serie = new Serie();
-            serie.setId(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable._ID)));
-            serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_NAME)));
-            serie.setUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_URL_IMAGE)));
-            serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_URL_TRAILER)));
-            serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_SYNOPSIS)));
-            serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_VUE)) > 0);
+            serie.setId(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable._ID)));
+            serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_TITRE)));
+            serie.setUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_IMAGE)));
+            serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER)));
+            serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS)));
+            serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_VUE)) > 0);
             serie.setRealisateurs(getRealisateurs(serie.getId()));
 
             series.add(serie);
@@ -97,18 +96,18 @@ public class DatabaseManager {
     public Serie getSerie(int serieId){
         SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
 
-        String whereClause = SeriesOpenHelper.SeriesTable._ID + " = " + String.valueOf(serieId);
+        String whereClause = SeriesOpenHelper.SerieTable._ID + " = " + String.valueOf(serieId);
 
-        Cursor cursor = db.query(SeriesOpenHelper.SeriesTable.TABLE_NAME, null, whereClause, null, null, null, null);
+        Cursor cursor = db.query(SeriesOpenHelper.SerieTable.TABLE_NAME, null, whereClause, null, null, null, null);
 
         if(cursor.moveToNext()){
             Serie serie = new Serie();
-            serie.setId(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable._ID)));
-            serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_NAME)));
-            serie.setUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_URL_IMAGE)));
-            serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_URL_TRAILER)));
-            serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_SYNOPSIS)));
-            serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SeriesTable.COLUMN_VUE)) > 0);
+            serie.setId(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable._ID)));
+            serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_TITRE)));
+            serie.setUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_IMAGE)));
+            serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER)));
+            serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS)));
+            serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_VUE)) > 0);
             serie.setRealisateurs(getRealisateurs(serie.getId()));
 
             return serie;
@@ -122,6 +121,20 @@ public class DatabaseManager {
         ContentValues contentValues = new ContentValues();
         contentValues.put(SeriesOpenHelper.GenreTable.COLUMN_NAME, genre.getNom());
       long newRowId =db.insert(SeriesOpenHelper.GenreTable.TABLE_NAME,null,contentValues);
+        if(newRowId==1){
+            throw new SQLException("Insertion Failed");
+        }
+        return newRowId;
+    }
+    public long insertSerie(SQLiteDatabase db, Serie serie) throws SQLException {
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_TITRE, serie.getTitre());
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_URL_IMAGE, serie.getUrl());
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER, serie.getTrailerUrl());
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS, serie.getSynopsis());
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_VUE, 0);
+        long newRowId = db.insert(SeriesOpenHelper.GenreTable.TABLE_NAME,null,contentValues);
         if(newRowId==1){
             throw new SQLException("Insertion Failed");
         }

@@ -1,23 +1,15 @@
 package com.example.labo.ingesup.series.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.labo.ingesup.series.R;
-import com.example.labo.ingesup.series.bean.Genre;
-import com.example.labo.ingesup.series.bean.Serie;
-import com.example.labo.ingesup.series.database.DatabaseManager;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.labo.ingesup.series.db.DatabaseManager;
+import com.example.labo.ingesup.series.db.SeriesOpenHelper;
 
 /**
- * Created by swater on 05/11/2014.
+ * Created by Lepoivre Pierre Antoine on 05/11/2014.
  */
 public class MainActivity extends Activity {
 
@@ -30,7 +22,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DatabaseManager.getInstance().init(this);
+        SeriesOpenHelper a;
         //insertInDatabaseFirstTime();
     }
 /*
