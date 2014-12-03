@@ -27,7 +27,6 @@ public class SerieActivity extends Activity {
         setContentView(R.layout.activity_serie);
 
         int genreId = getIntent().getIntExtra(GENRE_ID, -1);
-        genreId = 5;
 
         List<Serie> mesSeries = DatabaseManager.getInstance().getSerieByGenre(genreId);
 

@@ -6,11 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="TitleSerie">NomSerie</string>
     <string name="Genre">Genre :</string>
-    <string name="NomGenre"></string>
     <string name="Realisateur">Réalisateur :</string>
-    <string name="NomRealisateur"></string>
     <string name="Synopsis">Synopsis :</string>
-    <string name="TextSynopsis"></string>
     <string name="genre_titre">Genres</string>
 
     <!-- Création d'une série -->
@@ -26,5 +23,9 @@
     <string name="detail_genre">Genre : &#160;</string>
     <string name="detail_synopsis">Synopsis :</string>
     <string name="detail_vue">Vue</string>
+
+    <!-- Youtube -->
+    <string name="youtube_api_key">AIzaSyDg6LMgy7HenrBBZdAkQMau0FkmzKFA51o</string>
+    <string name="youtube_error">Une erreur s\'est produite lors de la lecture de la vidéo.</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.labo.ingesup.series.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -81,8 +82,28 @@ public class Serie {
         return mRealisateurs;
     }
 
+    public String getRealisateursString(){
+        String realisateurString = "";
+        for(String realisateur : mRealisateurs){
+            realisateurString += realisateur + ", ";
+        }
+
+        return realisateurString;
+    }
+
     public void setRealisateurs(List<String> mRealisateurs) {
         this.mRealisateurs = mRealisateurs;
+    }
+
+    public void setRealisateurs(String realisateurString){
+        String[] realisateur = realisateurString.split(";");
+
+        for(int i = 0; i < realisateur.length; i++){
+            if(mRealisateurs == null)
+                mRealisateurs = new ArrayList<String>();
+
+            mRealisateurs.add(realisateur[i]);
+        }
     }
 
     public String getSynopsis() {

@@ -61,12 +61,9 @@ public class DatabaseManager {
             serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_TITRE)));
             serie.setUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_IMAGE)));
             serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER)));
+            serie.setRealisateurs(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUM_REALISATEURS)));
             serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS)));
             serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_VUE)) > 0);
-            serie.setRealisateurs(null);
-            //TODO S'occuper de récupérer la liste des réalisateurs
-
-
 
             series.add(serie);
         }
@@ -90,10 +87,8 @@ public class DatabaseManager {
             serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER)));
             serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS)));
             serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_VUE)) > 0);
-            serie.setRealisateurs(null);
+            serie.setRealisateurs(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUM_REALISATEURS)));
             serie.setGenre(getGenre(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_ID_GENRE))));
-            //TODO S'occuper de récupérer la liste des réalisateurs
-
 
             cursor.close();
 
@@ -129,7 +124,7 @@ public class DatabaseManager {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(SeriesOpenHelper.GenreTable.COLUMN_NAME, genre.getNom());
-        long newRowId =db.insert(SeriesOpenHelper.GenreTable.TABLE_NAME,null,contentValues);
+        long newRowId = db.insert(SeriesOpenHelper.GenreTable.TABLE_NAME, null, contentValues);
 
         if(newRowId == -1){
             throw new SQLException("Insertion Failed");
@@ -143,7 +138,13 @@ public class DatabaseManager {
         contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_TITRE, serie.getTitre());
         contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_URL_IMAGE, serie.getUrl());
         contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER, serie.getTrailerUrl());
-        contentValues.put(SeriesOpenHelper.SerieTable.COLUM_REALISATEURS, serie.getRealisateurs().toString());
+
+        String realisateurString = "";
+        for(String realisateur : serie.getRealisateurs()){
+            realisateurString += realisateur + ";";
+        }
+
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUM_REALISATEURS, realisateurString);
         contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS, serie.getSynopsis());
         contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_VUE, false);
         contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_ID_GENRE, serie.getGenre().getId());
@@ -153,6 +154,24 @@ public class DatabaseManager {
             throw new SQLException("Insertion Failed");
         }
         return newRowId;
+    }
+
+    public int updateSerie(int serieId) throws SQLException {
+        SQLiteDatabase db = seriesOpenHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(SeriesOpenHelper.SerieTable.COLUMN_VUE, true);
+
+        String whereClause = SeriesOpenHelper.SerieTable._ID + "=?";
+        String[] whereConditions = new String[] { String.valueOf(serieId) };
+
+        int updatedRowId = db.update(SeriesOpenHelper.SerieTable.TABLE_NAME, contentValues, whereClause, whereConditions);
+
+        if(updatedRowId == -1){
+            throw new SQLException("Update failed");
+        }
+
+        return updatedRowId;
     }
 
 }
