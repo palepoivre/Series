@@ -32,7 +32,7 @@ public class SerieActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serie);
 
-        int genreId = getIntent().getIntExtra(GENRE_ID, -1);
+        final int genreId = getIntent().getIntExtra(GENRE_ID, -1);
 
         List<Serie> mesSeries = DatabaseManager.getInstance().getSerieByGenre(genreId);
 
@@ -42,8 +42,9 @@ public class SerieActivity extends Activity {
         boutonAjoutSerie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent detailActivityIntent = new Intent(SerieActivity.this, CreateSerieActivity.class);
-                startActivity(detailActivityIntent);
+                Intent addActivityIntent = new Intent(SerieActivity.this, CreateSerieActivity.class);
+                addActivityIntent.putExtra(CreateSerieActivity.GENRE_ID_AJOUT, genreId);
+                startActivity(addActivityIntent);
             }
         });
 

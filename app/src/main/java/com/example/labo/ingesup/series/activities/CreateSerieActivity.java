@@ -27,6 +27,7 @@ import java.util.List;
  */
 public class CreateSerieActivity extends Activity {
 
+    public static final String GENRE_ID_AJOUT = "GENRE_ID_AJOUT";
     private static final String GOOGLE_IMAGE_URL = "https://www.google.fr/imghp?hl=fr&tab=wi&ei=QgV_VMrGAc_jasrVgNAC&ved=0CAQQqi4oAg";
     private static final String YOUTUBE_URL = "http://www.youtube.com/";
 
@@ -51,6 +52,7 @@ public class CreateSerieActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_serie_activity);
+
 
         /** Récupération des ressources graphiques **/
 
@@ -126,6 +128,8 @@ public class CreateSerieActivity extends Activity {
 
     private void loadSpinnerGenre(){
         mSpinnerGenre.setAdapter(new GenreSpinnerAdapter(this, R.layout.item_genre_spinner, DatabaseManager.getInstance().getAllGenres()));
+        final int genreIdAjout = getIntent().getIntExtra(GENRE_ID_AJOUT, -1)-1;
+        mSpinnerGenre.setSelection(genreIdAjout);
     }
 
     private List<String> retrieveRealisateurs(){

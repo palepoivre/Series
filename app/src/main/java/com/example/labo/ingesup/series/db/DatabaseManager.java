@@ -125,7 +125,7 @@ public class DatabaseManager {
         return null;
     }
 
-    private Genre getGenre(int genreId){
+    public Genre getGenre(int genreId){
         SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
 
         String whereClause = SeriesOpenHelper.GenreTable._ID + "=?";
