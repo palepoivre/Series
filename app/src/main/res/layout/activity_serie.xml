@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/tv_titre"
-        android:text="Serie"
+        android:text="Series"
         android:textSize="@dimen/titre"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -23,13 +23,20 @@
     <ListView
         android:id="@+id/lv_serie"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tv_titre"
         android:layout_marginTop="20dp"
         android:divider="@null"
         android:dividerHeight="10dp">
-
-
     </ListView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_add_serie"
+        android:text="Ajouter une serie"
+        android:layout_below="@+id/lv_serie"
+        />
 
 </RelativeLayout>
