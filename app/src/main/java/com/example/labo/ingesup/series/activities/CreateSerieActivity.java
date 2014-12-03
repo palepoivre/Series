@@ -1,6 +1,8 @@
 package com.example.labo.ingesup.series.activities;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,27 +12,32 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.labo.ingesup.series.R;
-import com.example.labo.ingesup.series.bean.Genre;
 import com.example.labo.ingesup.series.bean.Serie;
+import com.example.labo.ingesup.series.db.DatabaseManager;
 import com.example.labo.ingesup.series.list.GenreSpinnerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 /**
  * Created by Eliott on 16/10/2014.
  */
 public class CreateSerieActivity extends Activity {
 
+    private static final String GOOGLE_IMAGE_URL = "https://www.google.fr/imghp?hl=fr&tab=wi&ei=QgV_VMrGAc_jasrVgNAC&ved=0CAQQqi4oAg";
+    private static final String YOUTUBE_URL = "http://www.youtube.com/";
+
     /** Ressources graphiques **/
 
     private EditText mEditTextTitre;
     private EditText mEditTextSynopsis;
     private EditText mEditTextRealisateur;
+    private EditText mEditTextImage;
+    private EditText mEditTextTrailer;
 
     private Spinner mSpinnerGenre;
 
-    private ImageView mImageView;
+    private ImageView mImageViewImage;
+    private ImageView mImageViewTrailer;
 
     private Button mButtonAjouter;
 
@@ -50,17 +57,26 @@ public class CreateSerieActivity extends Activity {
         mSpinnerGenre = (Spinner) findViewById(R.id.s_creation_genre);
         loadSpinnerGenre();
 
-        mImageView = (ImageView) findViewById(R.id.iv_creation);
+        mImageViewImage = (ImageView) findViewById(R.id.iv_image);
+        mImageViewTrailer = (ImageView) findViewById(R.id.iv_trailer);
 
         mButtonAjouter = (Button) findViewById(R.id.b_creation);
 
         /**/
 
-        //Lorsque l'on clique sur l'image
-        mImageView.setOnClickListener(new View.OnClickListener() {
+        mImageViewImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intentWeb = new Intent(Intent.ACTION_VIEW);
+                intentWeb.setData(Uri.parse(GOOGLE_IMAGE_URL));
+                startActivity(intentWeb);
+            }
+        });
 
+        mImageViewTrailer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_URL)));
             }
         });
 
@@ -80,6 +96,10 @@ public class CreateSerieActivity extends Activity {
                 serieACreer.setTitre(mEditTextTitre.getText().toString());
                 serieACreer.setSynopsis(mEditTextSynopsis.getText().toString());
                 serieACreer.setVue(false);
+
+                try {
+                    DatabaseManager.getInstance().insertSerie(DatabaseManager.getInstance().getDbHelper().getWritableDatabase(), serieACreer);
+                } catch (SQLException ignored) {}
                 //TODO Ajouter le reste des informations & ajouter à la BDD
             }
         });
@@ -87,13 +107,7 @@ public class CreateSerieActivity extends Activity {
     }
 
     private void loadSpinnerGenre(){
-        //TODO Charger les genres depuis la base de données
-        List<Genre> genres = new ArrayList<Genre>();
-        genres.add(new Genre("Genre 1"));
-        genres.add(new Genre("Genre 2"));
-        genres.add(new Genre("Genre 3"));
-
-        mSpinnerGenre.setAdapter(new GenreSpinnerAdapter(this, R.layout.item_genre_spinner, genres));
+        mSpinnerGenre.setAdapter(new GenreSpinnerAdapter(this, R.layout.item_genre_spinner, DatabaseManager.getInstance().getAllGenres()));
     }
 
     /**
