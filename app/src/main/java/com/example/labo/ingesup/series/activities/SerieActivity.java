@@ -1,9 +1,13 @@
 package com.example.labo.ingesup.series.activities;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.labo.ingesup.series.R;
@@ -31,6 +35,15 @@ public class SerieActivity extends Activity {
         List<Serie> mesSeries = DatabaseManager.getInstance().getSerieByGenre(genreId);
 
         ListView listDesSeries = (ListView) findViewById(R.id.lv_serie);
+
+        Button boutonAjoutSerie = (Button) findViewById(R.id.button_add_serie);
+        boutonAjoutSerie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detailActivityIntent = new Intent(SerieActivity.this, CreateSerieActivity.class);
+                startActivity(detailActivityIntent);
+            }
+        });
 
         SerieAdapter serieAdapter = new SerieAdapter(this, R.layout.item_serie, mesSeries);
 
