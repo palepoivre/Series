@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.labo.ingesup.series.R;
@@ -46,7 +47,8 @@ public class SerieAdapter extends ArrayAdapter {
         TextView textViewTitre = (TextView) convertView.findViewById(R.id.tv_item_titre);
         textViewTitre.setText(serieEnCours.getTitre());
         ImageView imageViewFleche = (ImageView) convertView.findViewById(R.id.iv_item_fleche_serie);
-        imageViewFleche.setOnClickListener(new View.OnClickListener() {
+        RelativeLayout relativeLayoutSerie = (RelativeLayout) convertView.findViewById(R.id.rl_item_serie);
+        relativeLayoutSerie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent detailActivityIntent = new Intent(mContext, DetailActivity.class);
