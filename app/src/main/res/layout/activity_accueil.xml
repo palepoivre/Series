@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+ <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/titre"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"/>
+
+    <ImageView
+        android:layout_width="440dp"
+        android:layout_height="340dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/serietv" />
+
+
+    <Button
+        android:id="@+id/b_Listeseries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="20dp"
+        android:background="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:text="@string/liste_de_series" />
+
+    <Button
+        android:id="@+id/b_Listegenres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="20dp"
+        android:background="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:text="@string/liste_de_genres" />
+
+</LinearLayout>
+    </ScrollView>

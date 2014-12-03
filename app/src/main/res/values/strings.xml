@@ -4,11 +4,14 @@
     <string name="app_name">Series</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="titre">Series</string>
     <string name="TitleSerie">NomSerie</string>
     <string name="Genre">Genre :</string>
     <string name="Realisateur">Réalisateur :</string>
     <string name="Synopsis">Synopsis :</string>
     <string name="genre_titre">Genres</string>
+    <string name="liste_de_series">Liste des Séries</string>
+    <string name="liste_de_genres">Liste des Genres</string>
 
     <!-- Création d'une série -->
     <string name="creation_titre">Titre</string>
