@@ -35,8 +35,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_add_serie"
-        android:text="Ajouter une serie"
+        android:text="@string/creation_ajouter"
         android:layout_below="@+id/lv_serie"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
         />
 
 </RelativeLayout>

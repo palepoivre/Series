@@ -47,4 +47,20 @@ public class GenreSpinnerAdapter extends ArrayAdapter {
 
         return convertView;
     }
+
+    @Override
+    public View getDropDownView(int position, View convertView,
+                                ViewGroup parent) {
+        if(convertView == null){
+            LayoutInflater vi = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = vi.inflate(mResource, parent, false);
+        }
+
+        Genre currentGenre = mGenres.get(position);
+
+        TextView textViewItem = (TextView) convertView.findViewById(R.id.tv_item_genre_spinner);
+        textViewItem.setText(currentGenre.getNom());
+
+        return convertView;
+    }
 }

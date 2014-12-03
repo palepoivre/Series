@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.labo.ingesup.series.R;
+import com.example.labo.ingesup.series.bean.Genre;
 import com.example.labo.ingesup.series.bean.Serie;
 import com.example.labo.ingesup.series.db.DatabaseManager;
 import com.example.labo.ingesup.series.list.SerieAdapter;
@@ -45,9 +47,20 @@ public class SerieActivity extends Activity {
             }
         });
 
-        SerieAdapter serieAdapter = new SerieAdapter(this, R.layout.item_serie, mesSeries);
+        final SerieAdapter serieAdapter = new SerieAdapter(this, R.layout.item_serie, mesSeries);
 
         listDesSeries.setAdapter(serieAdapter);
+
+        listDesSeries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Serie clickedSerie = (Serie) parent.getItemAtPosition(position);
+
+                Intent detailActivityIntent = new Intent(SerieActivity.this, DetailActivity.class);
+                detailActivityIntent.putExtra(DetailActivity.SERIE_ID, clickedSerie.getId());
+                startActivity(detailActivityIntent);
+            }
+        });
     }
 
     @Override

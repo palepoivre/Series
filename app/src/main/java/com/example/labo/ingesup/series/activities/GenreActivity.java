@@ -1,15 +1,15 @@
 package com.example.labo.ingesup.series.activities;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.labo.ingesup.series.R;
 import com.example.labo.ingesup.series.bean.Genre;
 import com.example.labo.ingesup.series.db.DatabaseManager;
 import com.example.labo.ingesup.series.list.GenreAdapter;
-import java.util.ArrayList;
-import java.util.List;
+
 /**
  * Ecran d'acceuil.
  */
@@ -22,23 +22,16 @@ public class GenreActivity extends Activity {
         ListView listDesGenres = (ListView) findViewById(R.id.lv_genres);
         GenreAdapter monGenreAdapter = new GenreAdapter(this, R.layout.item_genre, DatabaseManager.getInstance().getAllGenres());
         listDesGenres.setAdapter(monGenreAdapter);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-// Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.genre, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-// Handle action bar item clicks here. The action bar will
-// automatically handle clicks on the Home/Up button, so long
-// as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        listDesGenres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Genre clickedGenre = (Genre) parent.getItemAtPosition(position);
+                Intent serieActivityIntent = new Intent(GenreActivity.this, SerieActivity.class);
+                serieActivityIntent.putExtra(SerieActivity.GENRE_ID, clickedGenre.getId());
+                startActivity(serieActivityIntent);
+
+            }
+        });
     }
 }
