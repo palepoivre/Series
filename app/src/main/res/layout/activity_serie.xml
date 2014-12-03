@@ -27,8 +27,8 @@
         android:layout_below="@+id/tv_titre"
         android:layout_marginTop="20dp"
         android:divider="@null"
-        android:dividerHeight="10dp">
-    </ListView>
+        android:layout_above="@+id/button_add_serie"
+        android:dividerHeight="10dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/button_add_serie"
         android:text="@string/creation_ajouter"
-        android:layout_below="@+id/lv_serie"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="20dp"
         android:padding="20dp"
         android:background="@android:color/holo_blue_dark"

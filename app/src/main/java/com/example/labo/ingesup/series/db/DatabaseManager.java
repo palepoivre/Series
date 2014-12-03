@@ -69,14 +69,22 @@ public class DatabaseManager {
         return series;
     }
 
-    public List<Serie> getSerieByGenre(int genreId){
+    public List<Serie> getSerieByGenre(int genreId) {
+
+
         SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
         List<Serie> series = new ArrayList<Serie>();
 
-        String whereClause = SeriesOpenHelper.SerieTable.COLUMN_ID_GENRE + " = " + String.valueOf(genreId);
+        String whereClause = null;
+
+        if(genreId !=-1) {
+            whereClause = SeriesOpenHelper.SerieTable.COLUMN_ID_GENRE + " = " + String.valueOf(genreId);
+
+
+        }
 
         Cursor cursor = db.query(SeriesOpenHelper.SerieTable.TABLE_NAME, null, whereClause, null, null, null, null);
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Serie serie = new Serie();
             serie.setId(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable._ID)));
             serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_TITRE)));
@@ -88,10 +96,8 @@ public class DatabaseManager {
 
             series.add(serie);
         }
-
-        return  series;
-    }
-
+        return series;
+}
     public Serie getSerie(int serieId){
         SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
 
