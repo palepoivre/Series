@@ -48,6 +48,27 @@ public class DatabaseManager {
         return genres;
     }
 
+    public List<Serie> getAllSeries() {
+        SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
+        List<Serie> series = new ArrayList<Serie>();
+
+        Cursor cursor = db.query(SeriesOpenHelper.SerieTable.TABLE_NAME, null, null, null, null, null, null);
+        while(cursor.moveToNext()){
+            Serie serie = new Serie();
+            serie.setId(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable._ID)));
+            serie.setTitre(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_TITRE)));
+            serie.setUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_IMAGE)));
+            serie.setTrailerUrl(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_URL_TRAILER)));
+            serie.setRealisateurs(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUM_REALISATEURS)));
+            serie.setSynopsis(cursor.getString(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_SYNOPSIS)));
+            serie.setVue(cursor.getInt(cursor.getColumnIndex(SeriesOpenHelper.SerieTable.COLUMN_VUE)) > 0);
+
+            series.add(serie);
+        }
+
+        return series;
+    }
+
     public List<Serie> getSerieByGenre(int genreId){
         SQLiteDatabase db = seriesOpenHelper.getReadableDatabase();
         List<Serie> series = new ArrayList<Serie>();

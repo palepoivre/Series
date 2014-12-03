@@ -1,12 +1,18 @@
 package com.example.labo.ingesup.series.activities;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.labo.ingesup.series.R;
+import com.example.labo.ingesup.series.bean.Genre;
 import com.example.labo.ingesup.series.bean.Serie;
 import com.example.labo.ingesup.series.db.DatabaseManager;
 import com.example.labo.ingesup.series.list.SerieAdapter;
@@ -32,9 +38,29 @@ public class SerieActivity extends Activity {
 
         ListView listDesSeries = (ListView) findViewById(R.id.lv_serie);
 
-        SerieAdapter serieAdapter = new SerieAdapter(this, R.layout.item_serie, mesSeries);
+        Button boutonAjoutSerie = (Button) findViewById(R.id.button_add_serie);
+        boutonAjoutSerie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent detailActivityIntent = new Intent(SerieActivity.this, CreateSerieActivity.class);
+                startActivity(detailActivityIntent);
+            }
+        });
+
+        final SerieAdapter serieAdapter = new SerieAdapter(this, R.layout.item_serie, mesSeries);
 
         listDesSeries.setAdapter(serieAdapter);
+
+        listDesSeries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Serie clickedSerie = (Serie) parent.getItemAtPosition(position);
+
+                Intent detailActivityIntent = new Intent(SerieActivity.this, DetailActivity.class);
+                detailActivityIntent.putExtra(DetailActivity.SERIE_ID, clickedSerie.getId());
+                startActivity(detailActivityIntent);
+            }
+        });
     }
 
     @Override

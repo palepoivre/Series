@@ -42,22 +42,14 @@ public class GenreAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        final Genre genreEnCours = mGenres.get(position);
+        if(convertView == null){
+            convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
+        }
 
-        convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
+        final Genre genreEnCours = mGenres.get(position);
 
         TextView textViewTitre = (TextView) convertView.findViewById(R.id.tv_item_titre);
         textViewTitre.setText(genreEnCours.getNom());
-        ImageView imageViewFleche = (ImageView) convertView.findViewById(R.id.iv_item_fleche);
-        imageViewFleche.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent serieActivityIntent = new Intent(mContext, SerieActivity.class);
-                serieActivityIntent.putExtra(SerieActivity.GENRE_ID, genreEnCours.getId());
-                mContext.startActivity(serieActivityIntent);
-            }
-        });
-
         return convertView;
     }
 }

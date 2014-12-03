@@ -84,8 +84,11 @@ public class Serie {
 
     public String getRealisateursString(){
         String realisateurString = "";
-        for(String realisateur : mRealisateurs){
-            realisateurString += realisateur + ", ";
+
+        for(int i = 0; i < mRealisateurs.size(); i++){
+            realisateurString += mRealisateurs.get(i);
+            if(i != mRealisateurs.size() - 1)
+                realisateurString += ", ";
         }
 
         return realisateurString;

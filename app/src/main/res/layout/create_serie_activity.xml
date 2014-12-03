@@ -60,13 +60,64 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
 
-        <ImageView
-            android:id="@+id/iv_creation"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:text="@string/creation_image"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <EditText
+                android:id="@+id/et_creation_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_toLeftOf="@+id/iv_image"
+                android:layout_marginRight="15dp"/>
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:src="@android:drawable/ic_menu_report_image"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:text="@string/creation_trailer"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <EditText
+                android:id="@+id/et_creation_trailer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_toLeftOf="@+id/iv_trailer"
+                android:layout_marginRight="15dp"/>
+
+            <ImageView
+                android:id="@+id/iv_trailer"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/youtube"/>
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/b_creation"

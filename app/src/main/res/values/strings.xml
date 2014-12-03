@@ -18,8 +18,12 @@
     <string name="creation_synopsis">Synopsis</string>
     <string name="creation_genre">Genre</string>
     <string name="creation_realisateur">Réalisateur</string>
+    <string name="creation_image">Lien image</string>
+    <string name="creation_trailer">Lien trailer</string>
     <string name="creation_ajouter">AJOUTER</string>
     <string name="creation_erreur">Une ou plusieurs informations sont manquantes.</string>
+    <string name="creation_insert_error">Une erreur s\'est produite lors de l\'insertion.</string>
+    <string name="creation_insert_success">Série ajoutée avec succès !</string>
 
     <!-- Detail d'une série -->
     <string name="detail_realisateur">Réalisateur : &#160;</string>
