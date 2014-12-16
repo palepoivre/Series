@@ -48,6 +48,8 @@ public class CreateSerieActivity extends Activity {
 
     /**/
 
+    private int mGenreIdAjout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,8 +120,15 @@ public class CreateSerieActivity extends Activity {
 
                 Toast.makeText(CreateSerieActivity.this, getString((e == null) ? R.string.creation_insert_success : R.string.creation_insert_error), Toast.LENGTH_LONG).show();
 
-                Intent homeIntent = new Intent(CreateSerieActivity.this, SerieActivity.class);
+                Intent homeIntent;
+                if(mGenreIdAjout < 0)
+                    homeIntent = new Intent(CreateSerieActivity.this, AccueilActivity.class);
+                else{
+                    homeIntent = new Intent(CreateSerieActivity.this, SerieActivity.class);
+                    homeIntent.putExtra(SerieActivity.GENRE_ID, mGenreIdAjout + 1);
+                }
                 homeIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeIntent);
             }
         });
@@ -128,8 +137,8 @@ public class CreateSerieActivity extends Activity {
 
     private void loadSpinnerGenre(){
         mSpinnerGenre.setAdapter(new GenreSpinnerAdapter(this, R.layout.item_genre_spinner, DatabaseManager.getInstance().getAllGenres()));
-        final int genreIdAjout = getIntent().getIntExtra(GENRE_ID_AJOUT, -1)-1;
-        mSpinnerGenre.setSelection(genreIdAjout);
+        mGenreIdAjout = getIntent().getIntExtra(GENRE_ID_AJOUT, -1)-1;
+        mSpinnerGenre.setSelection(mGenreIdAjout);
     }
 
     private List<String> retrieveRealisateurs(){
@@ -149,10 +158,6 @@ public class CreateSerieActivity extends Activity {
      * Retourne vrai si une information est manquante
      */
     private boolean informationIsMissing(){
-        boolean a = titreIsMissing();
-        boolean b = synopsisIsMissing();
-        boolean c = realisateurIsMissing();
-        boolean d = genreIsMissing();
         return (titreIsMissing() || synopsisIsMissing() || realisateurIsMissing() || genreIsMissing());
     }
 
